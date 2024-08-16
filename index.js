@@ -54,7 +54,7 @@ app.put('/file/:fileName', (req, res)=>{
     const newFilepath = path.join(__dirname, "root", `${updatedFileName}`)
     if(fs.existsSync(filePath)){
       const fileContent = updateAfile(filePath, newFilepath, newFileData);
-      res.status(200).send("File Updated Successfully")
+      res.status(200).send({"message": "File Updated Successfully"})
     }else{
       res.status(400).send({"message": "File does not exist"})
     }
