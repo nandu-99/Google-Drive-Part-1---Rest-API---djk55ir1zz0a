@@ -1,14 +1,13 @@
 import express from 'express';
 import fs from 'fs';
 import path from 'path';
-import  createAfile from './tools/createAfile.js';
+import createAfile from './tools/createAfile.js';
+import deleteAFile from './tools/deleteAFile.js';
 import getAFile from './tools/getAFile.js';
 import getAllFiles from './tools/getAllFilename.js';
 import updateAfile from './tools/updateAfile.js';
-import deleteAFile from './tools/deleteAFile.js';
 const app = express();
 const port = 8000;
-// const path = require("path");
 app.use(express.json());
 const __dirname = path.resolve();
 
@@ -78,3 +77,5 @@ app.delete('/file/:fileName', (req, res)=>{
 app.listen(port, () => {
   console.log(`App listening at http://localhost:${port}`);
 });
+
+export default {app};
