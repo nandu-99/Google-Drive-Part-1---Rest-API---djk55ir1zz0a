@@ -68,7 +68,7 @@ app.delete('/file/:fileName', (req, res)=>{
     const fileName = req.params.fileName;
     const filePath = path.join(__dirname, "root" , `${fileName}`);
     const deleted = deleteAFile(filePath);
-    res.status(200).send({"message": "File deleted successfully"})
+    res.status(200).send({"message": "File Deleted successfully"})
   }catch(err){
     res.status(500).send({"error":'Internal Server Error'})
   }
