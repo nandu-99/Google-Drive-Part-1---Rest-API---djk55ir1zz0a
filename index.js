@@ -23,7 +23,7 @@ app.get("/file", (req, res) => {
 app.get('/file/:fileName', (req, res)=>{
   try{
     const fileName = req.params.fileName;
-    const filePath = path.join(__dirname, "root" , `${fileName}.txt`);
+    const filePath = path.join(__dirname, "root" , `${fileName}`);
     if(fs.existsSync(filePath)){
       const fileContent = getAFile(filePath);
       res.status(200).send({"fileContent": fileContent})
@@ -38,7 +38,7 @@ app.get('/file/:fileName', (req, res)=>{
 app.post('/file/create', (req, res)=>{
   try{
     const {fileName, fileData} = req.body;
-    const filePath = path.join(__dirname, "root" , `${fileName}.txt`);
+    const filePath = path.join(__dirname, "root" , `${fileName}`);
     createAfile(filePath, fileData)
     res.status(200).send({"message": "File created successfully"})
   }catch(err){
@@ -50,8 +50,8 @@ app.put('/file/:fileName', (req, res)=>{
   try{
     const fileName = req.params.fileName;
     const {updatedFileName, newFileData} = req.body;
-    const filePath = path.join(__dirname, "root" , `${fileName}.txt`);
-    const newFilepath = path.join(__dirname, "root", `${updatedFileName}.txt`)
+    const filePath = path.join(__dirname, "root" , `${fileName}`);
+    const newFilepath = path.join(__dirname, "root", `${updatedFileName}`)
     if(fs.existsSync(filePath)){
       const fileContent = updateAfile(filePath, newFilepath, newFileData);
       res.status(200).send({ "message": "File updated successfully"})
@@ -66,7 +66,7 @@ app.put('/file/:fileName', (req, res)=>{
 app.delete('/file/:fileName', (req, res)=>{
   try{
     const fileName = req.params.fileName;
-    const filePath = path.join(__dirname, "root" , `${fileName}.txt`);
+    const filePath = path.join(__dirname, "root" , `${fileName}`);
     const deleted = deleteAFile(filePath);
     res.status(200).send({"message": "File deleted successfully"})
   }catch(err){
